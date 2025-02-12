@@ -5,7 +5,7 @@ const addBtnElement = document.querySelector("#add");
 const tableElement = document.querySelector("#table");
 const totalElement = document.querySelector("#total");
 
-add.addEventListener("click", function () {
+addBtnElement.addEventListener("click", function () {
   let tr = document.createElement("tr");
   allowEdit(createCell(tr, nameElement.value, "name"));
   allowEdit(createCell(tr, priceElement.value, "price"));
@@ -18,6 +18,10 @@ add.addEventListener("click", function () {
 
   table.appendChild(tr);
   recountTotal();
+
+  clearInput(nameElement);
+  clearInput(priceElement);
+  clearInput(amountElement);
 });
 
 function createCell(tr, value, name) {
@@ -62,4 +66,8 @@ function allowEdit(td) {
     td.appendChild(newInput);
     newInput.focus();
   });
+}
+
+function clearInput(element) {
+  element.value = "";
 }
